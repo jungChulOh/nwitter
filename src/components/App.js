@@ -12,6 +12,7 @@ function App() {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
+          photoURL: user.photoURL,
           updateProfile: (args) => user.updateProfile(args),
         });
       } else {
@@ -27,6 +28,7 @@ function App() {
     setUserObj({
       displayName: user.displayName,
       uid: user.uid,
+      photoURL: user.photoURL,
       updateProfile: (args) => user.updateProfile(args),
     });
   };
@@ -42,7 +44,7 @@ function App() {
       ) : (
         <div>Loading...</div>
       )}
-      <footer>&copy; Nwitter {new Date().getFullYear()}</footer>
+      {/* <footer>&copy; Nwitter {new Date().getFullYear()}</footer> */}
     </>
   );
 }
