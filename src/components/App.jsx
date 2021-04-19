@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppRouter from "components/Router";
 import { authService } from "fbase";
+import { Helmet } from "react-helmet";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -35,6 +36,10 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>Jung Nwitter</title>
+        <meta name="description" content="Twitter를 clone 코딩 해보자!" />
+      </Helmet>
       {init ? (
         <AppRouter
           isLoggedIn={Boolean(userObj)}

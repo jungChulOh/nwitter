@@ -1,6 +1,7 @@
 import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 import { FiDelete, FiEdit3 } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 
 const Nweet = ({ nweetObj, isOwner }) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -59,9 +60,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
         </>
       ) : (
         <div className="px-5 text-gray-600">
-          {isOwner && (
-            <div className="flex justify-between items-center mt-2">
-              <div className="flex justify-center items-center">
+          <div className="flex justify-between items-center mt-2">
+            <div className="flex justify-center items-center">
+              {nweetObj.photoURL ? (
                 <img
                   src={nweetObj.photoURL}
                   alt="profile"
@@ -69,8 +70,14 @@ const Nweet = ({ nweetObj, isOwner }) => {
                   height="50px"
                   className="rounded-full inline mr-2"
                 />
-                <span className="text-gray-400">{nweetObj.displayName}</span>
-              </div>
+              ) : (
+                <CgProfile size="50px" className="mr-2" />
+              )}
+              <span className="text-gray-400">
+                {!nweetObj.displayName ? "No NickName" : nweetObj.displayName}
+              </span>
+            </div>
+            {isOwner && (
               <div>
                 <button
                   onClick={onToggleEdit}
@@ -85,8 +92,8 @@ const Nweet = ({ nweetObj, isOwner }) => {
                   <FiDelete size="25px" />
                 </button>
               </div>
-            </div>
-          )}
+            )}
+          </div>
           <h4 className="my-4">{nweetObj.text}</h4>
         </div>
       )}
